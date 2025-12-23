@@ -22,4 +22,7 @@ public interface DeptMapper {
 
     @Insert("INSERT into dept(name, create_time, update_time) values (#{name},#{createTime},#{updateTime})")
     void add(Dept dept);
+
+    @Select("select * from dept where id = #{id}")
+    public Dept getById(Integer id);
 }

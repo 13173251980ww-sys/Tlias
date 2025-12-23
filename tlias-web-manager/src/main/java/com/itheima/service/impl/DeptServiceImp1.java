@@ -33,4 +33,9 @@ public class DeptServiceImp1 implements DeptService {
         //保存部门
         deptMapper.add(dept);
     }
+
+    @Override
+    public Dept getById(Integer id) {
+        return deptMapper.getById(id);
+    }
 }

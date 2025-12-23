@@ -38,8 +38,17 @@ public class DeptController {
     //增
     @PostMapping("/depts")
     public Result add(@RequestBody Dept dept){
-        System.out.println("添加部门:"+dept);
         deptService.add(dept);
         return Result.success();
     }
+
+    //改
+    //数据回显
+    @GetMapping("/depts/{id}")
+    public Result getById(@PathVariable Integer id){
+        System.out.println(id);
+        Dept dept=deptService.getById(id);
+        return Result.success(dept);
+    }
+
 }
