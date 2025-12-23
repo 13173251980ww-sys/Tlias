@@ -15,28 +15,28 @@ import org.springframework.web.bind.annotation.*;
 import java.net.http.HttpRequest;
 import java.util.List;
 
-@Slf4j
+@RequestMapping("/depts")
 @RestController
 public class DeptController {
     @Autowired
     private DeptService deptService;
 
     //查
-    @GetMapping("/depts")
+    @GetMapping
     public Result get(){
          List<Dept> deptList=deptService.findAll();
          return Result.success(deptList);
     }
 
     //删
-    @DeleteMapping("/depts")
+    @DeleteMapping
     public Result delete(Integer id){
         deptService.deleteById(id);
         return Result.success();
     }
 
     //增
-    @PostMapping("/depts")
+    @PostMapping
     public Result add(@RequestBody Dept dept){
         deptService.add(dept);
         return Result.success();
@@ -44,14 +44,14 @@ public class DeptController {
 
     //改
     //数据回显
-    @GetMapping("/depts/{id}")
+    @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id){
         Dept dept=deptService.getById(id);
         return Result.success(dept);
     }
 
     //修改数据
-    @PutMapping("/depts")
+    @PutMapping
     public Result update(@RequestBody Dept dept){
         deptService.update(dept);
         return Result.success();
