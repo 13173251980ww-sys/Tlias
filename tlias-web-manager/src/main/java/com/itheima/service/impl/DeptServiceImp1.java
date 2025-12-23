@@ -38,4 +38,10 @@ public class DeptServiceImp1 implements DeptService {
     public Dept getById(Integer id) {
         return deptMapper.getById(id);
     }
+
+    @Override
+    public void update(Dept dept) {
+        dept.setUpdateTime(LocalDateTime.now());
+        deptMapper.update(dept);
+    }
 }

@@ -46,9 +46,14 @@ public class DeptController {
     //数据回显
     @GetMapping("/depts/{id}")
     public Result getById(@PathVariable Integer id){
-        System.out.println(id);
         Dept dept=deptService.getById(id);
         return Result.success(dept);
     }
 
+    //修改数据
+    @PutMapping("/depts")
+    public Result update(@RequestBody Dept dept){
+        deptService.update(dept);
+        return Result.success();
+    }
 }
