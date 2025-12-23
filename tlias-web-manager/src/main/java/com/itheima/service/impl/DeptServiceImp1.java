@@ -7,6 +7,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -18,5 +19,18 @@ public class DeptServiceImp1 implements DeptService {
     @Override
     public List<Dept> findAll() {
         return deptMapper.findAll();
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        deptMapper.deleteById(id);
+    }
+
+    @Override
+    public void add(Dept dept) {
+        dept.setCreateTime(LocalDateTime.now());
+        dept.setUpdateTime(LocalDateTime.now());
+        //保存部门
+        deptMapper.add(dept);
     }
 }

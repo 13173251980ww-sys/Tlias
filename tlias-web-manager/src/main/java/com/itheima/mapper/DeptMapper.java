@@ -1,8 +1,11 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.Dept;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -13,4 +16,10 @@ public interface DeptMapper {
     //方法3:配置文件中打开mybatis驼峰转换
     @Select("select * from dept order by update_time desc")
     public List<Dept> findAll();
+
+    @Delete("delete from dept where id= #{id}")
+    void deleteById(Integer id);
+
+    @Insert("INSERT into dept(name, create_time, update_time) values (#{name},#{createTime},#{updateTime})")
+    void add(Dept dept);
 }
