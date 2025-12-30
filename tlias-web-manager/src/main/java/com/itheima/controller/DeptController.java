@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.http.HttpRequest;
 import java.util.List;
 
+@Slf4j
 @RequestMapping("/depts")
 @RestController
 public class DeptController {
@@ -25,6 +26,7 @@ public class DeptController {
     @GetMapping
     public Result get(){
          List<Dept> deptList=deptService.findAll();
+         log.info("查询所有部门"+deptList);
          return Result.success(deptList);
     }
 
@@ -32,6 +34,7 @@ public class DeptController {
     @DeleteMapping
     public Result delete(Integer id){
         deptService.deleteById(id);
+        log.info("删除id为"+id+"的部门");
         return Result.success();
     }
 
@@ -39,6 +42,7 @@ public class DeptController {
     @PostMapping
     public Result add(@RequestBody Dept dept){
         deptService.add(dept);
+        log.info("新增部门"+dept);
         return Result.success();
     }
 
@@ -54,6 +58,7 @@ public class DeptController {
     @PutMapping
     public Result update(@RequestBody Dept dept){
         deptService.update(dept);
+        log.info("更新部门为"+dept);
         return Result.success();
     }
 }
